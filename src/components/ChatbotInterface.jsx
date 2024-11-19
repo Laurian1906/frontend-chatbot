@@ -14,7 +14,7 @@ function ChatbotInterface() {
     async function fetchData() {
 
         try {
-            const getMessages = () => axios.get(`http://127.0.0.1:8000/{selectedModel}`, {
+            const getMessages = () => axios.get(`http://127.0.0.1:8000/${selectedModel}`, {
                 params: { user_message: userMessageAPI }
             });
             const [messages] = await Promise.all([getMessages()]);
