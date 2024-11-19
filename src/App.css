@@ -2,8 +2,6 @@
 Color palete: https://colorhunt.co/palette/000b58003161006a67fff4b7
 */
 
-
-
 .App{
   display:flex;
   justify-content: center;
@@ -21,6 +19,7 @@ Color palete: https://colorhunt.co/palette/000b58003161006a67fff4b7
   width:100%;
   height:100%;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .textbox-container{
@@ -37,15 +36,42 @@ Color palete: https://colorhunt.co/palette/000b58003161006a67fff4b7
   font-size:34px;
 }
 
+.selectModel{
+  width:auto;
+  height:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+  border-radius:25px;
+  margin: 20px;
+}
+.selectModel .label{
+  font-size:15px;
+  color:#67c4c1;
+  font-weight: 600;
+}
+.selectModel select{
+  border: 0;
+  border: 1px solid #006A67;
+  padding:7px;
+  border-radius:25px;
+  background: transparent;
+}
+
 .chatbox-container{
   width:670px;
   padding: 16px;
   margin-bottom: 20px;
   height:auto;
-  display:flex;
+  display:grid;
   justify-content: flex-end;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .message-user{
@@ -54,7 +80,6 @@ Color palete: https://colorhunt.co/palette/000b58003161006a67fff4b7
   padding: 15px;
   width: auto;
   height:auto;
-  /* border: 1px solid rgb(255, 255, 255); */
   border-radius:25px;
   text-align: right;
 }
@@ -65,7 +90,16 @@ Color palete: https://colorhunt.co/palette/000b58003161006a67fff4b7
   padding: 15px;
   width: auto;
   height:auto;
-  /* border: 1px solid rgb(255, 255, 255); */
+  border-radius:25px;
+  text-align: left;
+}
+
+.message-history{
+  font-size:19px;
+  color: #bebebe;
+  padding: 15px;
+  width: auto;
+  height:auto;
   border-radius:25px;
   text-align: left;
 }

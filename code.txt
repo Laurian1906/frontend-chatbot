@@ -1,0 +1,49 @@
+// Show each message from history
+
+setChatHistory(messages.data.history)
+const updatedHistory = [...chatHistory];
+for (let i = 0; i < messages.data.history.length; i++) {
+    if (messages.data.history[i].role === "user") {
+        updatedHistory.push({
+            role: "user",
+            usr_msg: (messages.data.history[i].parts).toString()
+        });
+    } else if (messages.data.history[i].role === "model") {
+        updatedHistory.push({
+            role: "model",
+            model_msg: (messages.data.history[i].parts).toString()
+        });
+    }
+}
+
+for (let j = 0; j < updatedHistory.length; j++) {
+    console.log(updatedHistory[j].role === "user" ? updatedHistory[j].usr_msg : updatedHistory[j].model_msg);
+}
+
+setChatHistory(updatedHistory);
+
+// Scroll to the latest message sent by AI
+
+    // const lastMessageRef = useRef(null);
+
+    // useEffect(() => {
+    //     if(lastMessageRef.current){
+    //         lastMessageRef.current.scrollIntoView({behavior: "smooth"});
+    //     }
+    // }, [chatHistory]);
+
+// Show each message from history from backend
+
+    // let messageElements = [];
+    // for (let j = 0; j < chatHistory.length; j++) {
+    //     const isLastMessage = j === chatHistory.length - 1 && chatHistory[j].role === "model";
+    //     messageElements.push(
+    //         <div
+    //             key={j}
+    //             ref={isLastMessage ? lastMessageRef : null} // Adaugă referința la ultimul mesaj AI
+    //             className={chatHistory[j].role === "user" ? "message-user" : "message-ai"}
+    //         >
+    //             {chatHistory[j].role === "user" ? chatHistory[j].usr_msg : chatHistory[j].model_msg}
+    //         </div>
+    //     );
+    // }
