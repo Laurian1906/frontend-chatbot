@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Message from "./Message";
+import '../styles/ChatbotInterface.css';
 
 import IconButton from '@mui/material/IconButton';
-import FileInput from "./FileInput";
+// import FileInput from "./FileInput";
 import SendIcon from '@mui/icons-material/Send';
 
 import axios from "axios";
@@ -10,21 +12,18 @@ import axios from "axios";
 function ChatbotInterface() {
 
     const [userMessage, setUserMessage] = useState([""]);
-    const [modelResponse, setModelResponse] = useState([""]);
+    // const [modelResponse, setModelResponse] = useState([""]);
     const [chatHistory, setChatHistory] = useState([]);
-    const [userMessageAPI, setUserMessageAPI] = useState([""]);
-    const [selectedModel, setSelectedModel] = useState("");
+    const [selectedModel, setSelectedModel] = useState("openai");
+    
 
     async function fetchData() {
-
         try {
             const getMessages = () => axios.get(`http://127.0.0.1:8000/${selectedModel}`, {
-                params: { user_message: userMessageAPI }
+                params: { user_message: userMessage }
             });
+            
             const [messages] = await Promise.all([getMessages()]);
-
-            setUserMessage(messages.data.user);
-            setModelResponse(messages.data.model);
 
             setChatHistory((prevHistory) => [
                 ...prevHistory,
@@ -42,25 +41,27 @@ function ChatbotInterface() {
         setSelectedModel(e.target.value);
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter" && userMessage.trim() !== "") {
+            handleSendMessage();
+            event.preventDefault();
+        }
+    }
+
     const handleSendMessage = () => {
-        if (userMessageAPI.trim() !== "") {
-            setUserMessage(userMessageAPI);
-            setModelResponse("Loading message...");
+
+        if (userMessage.trim() !== "") {
             fetchData();
-            setUserMessageAPI("");
+            setUserMessage("");
+        }else{
+            console.log("Type a message bro!");
         }
 
         setChatHistory((prevHistory) => [
             ...prevHistory,
-            { role: "user", usr_msg: userMessageAPI }
+            { role: "user", usr_msg: userMessage }
         ]);
-
-
     };
-
-    useEffect(() => {
-        console.log("Chat history updated:", chatHistory);
-    }, [chatHistory]);
 
     return (
         <div className="interface-container">
@@ -71,29 +72,29 @@ function ChatbotInterface() {
                         id="modelSelect"
                         value={selectedModel}
                         onChange={handleModelChange}>
-                        <option value="gemini">Gemini</option>
                         <option value="openai">OpenAi</option>
+                        <option value="gemini">Gemini</option>
                     </select>
                 </div>
-                <div className="uploadDocument">
+                {/* <div className="uploadDocument">
                     <FileInput/>
-                </div>
+                </div> */}
             </div>
             <div className="textbox-container">
 
-                <p className="placeholder-text">{userMessage !== "" ? "Just ask!" : ''}</p>
+                <p className="placeholder-text"></p>
                 <div className="chatbox-container">
-                    <span className="message-user">{userMessage}</span>
-                    <span className="message-ai">{modelResponse}</span>
+                    <Message message={chatHistory}/>
                 </div>
                 <div className="input-container">
                     <input
                         className="insert-message"
                         type="text"
                         placeholder="Insert message here"
-                        value={userMessageAPI}
-                        onChange={(e) => setUserMessageAPI(e.target.value)}></input>
-                    <IconButton color="primary" onClick={handleSendMessage}>
+                        value={userMessage}
+                        onChange={(e) => setUserMessage(e.target.value)} 
+                        onKeyDown={handleKeyDown}></input>
+                    <IconButton color="primary" onClick={handleSendMessage} disabled={userMessage === ""}>
                         <SendIcon style={{ fill: '#ffffff' }} />
                     </IconButton>
                 </div>

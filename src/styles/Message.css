@@ -1,0 +1,29 @@
+.message-user {
+    font-size: 19px;
+    color: #fcfcfc;
+    padding: 15px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    text-align: right;
+}
+
+.message-ai {
+    font-size: 19px;
+    color: #FFF4B7;
+    padding: 15px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    text-align: left;
+}
+
+.message-history {
+    font-size: 19px;
+    color: #bebebe;
+    padding: 15px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    text-align: left;
+}

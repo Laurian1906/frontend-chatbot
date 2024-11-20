@@ -1,0 +1,120 @@
+/* ChatbotInterface */
+.interface-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .navbar {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .textbox-container {
+    background: #006A67;
+    color: #ddd;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 34px;
+  }
+  
+  .selectModel {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 20px;
+  }
+  
+  .label {
+    font-size: 15px;
+    color: #67c4c1;
+    font-weight: 600;
+  }
+  
+  .selectModel select {
+    border: 0;
+    border: 1px solid #006A67;
+    padding: 7px;
+    border-radius: 25px;
+    background: transparent;
+  }
+  
+  .uploadDocument {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .custom-file-upload {
+    border: 1px solid #006A67;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+  
+  .chatbox-container {
+    width: 670px;
+    padding: 16px;
+    margin-bottom: 20px;
+    min-height:auto;
+    max-height: 500px;
+    display: grid;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .input-container {
+    background: #006A67;
+    color: #ddd;
+    width: 670px;
+    height: auto;
+    padding: 9px 16px;
+    inset: 0;
+    border: 1px solid #FFF4B7;
+    border-radius: 25px;
+  }
+  
+  .insert-message {
+    background: transparent;
+    border: 0;
+    color: #ddd;
+    width: 93%;
+    height: 100%;
+    font-size: 16px;
+    color: #FFFFFF;
+  
+  }
+  
+  .insert-message::placeholder {
+    color: #ddd;
+  }
+  
+  .insert-message:focus {
+    outline: none;
+  }
