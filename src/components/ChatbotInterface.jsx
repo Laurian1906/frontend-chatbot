@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+
 import IconButton from '@mui/material/IconButton';
+import FileInput from "./FileInput";
 import SendIcon from '@mui/icons-material/Send';
+
 import axios from "axios";
+
 
 function ChatbotInterface() {
 
@@ -60,15 +64,20 @@ function ChatbotInterface() {
 
     return (
         <div className="interface-container">
-            <div className="selectModel">
-                <label className="label" htmlFor="modelSelect"> Model: </label>
-                <select
-                    id="modelSelect"
-                    value={selectedModel}
-                    onChange={handleModelChange}>
-                    <option value="gemini">Gemini</option>
-                    <option value="openai">OpenAi</option>
-                </select>
+            <div className="navbar">
+                <div className="selectModel">
+                    <label className="label" htmlFor="modelSelect"> Model: </label>
+                    <select
+                        id="modelSelect"
+                        value={selectedModel}
+                        onChange={handleModelChange}>
+                        <option value="gemini">Gemini</option>
+                        <option value="openai">OpenAi</option>
+                    </select>
+                </div>
+                <div className="uploadDocument">
+                    <FileInput/>
+                </div>
             </div>
             <div className="textbox-container">
 
