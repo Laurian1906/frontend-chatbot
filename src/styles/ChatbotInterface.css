@@ -75,6 +75,25 @@
     cursor: pointer;
     border-radius: 25px;
   }
+
+  /*Scroll bar width*/
+  ::-webkit-scrollbar{
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track{
+    background: #64a7a4;
+    border-radius:2px;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background:#FFF4B7;
+    border-radius:2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover{
+    background:#f0e086;
+  }
   
   .chatbox-container {
     width: 670px;
@@ -117,4 +136,18 @@
   
   .insert-message:focus {
     outline: none;
+  }
+
+  @media screen and (max-width:740px) {
+    .chatbox-container{
+      display:flex;
+      width:100%;
+      height:auto;
+    }
+    .input-container{
+      display:flex;
+      width:80%;
+      margin:20px;
+      height:50px;
+    }
   }

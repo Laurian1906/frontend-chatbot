@@ -27,3 +27,11 @@
     border-radius: 25px;
     text-align: left;
 }
+
+@media screen and (max-width:740px) {
+    .message-ai,
+    .message-user{
+        margin: 0px auto 0px auto;
+        
+    }
+}

@@ -24,10 +24,14 @@ function ChatbotInterface() {
             });
             
             const [messages] = await Promise.all([getMessages()]);
+            
+            // if(messages.status != 200){
+                
+            // }
 
             setChatHistory((prevHistory) => [
                 ...prevHistory,
-                { role: "model", model_rsp: messages.data.model }
+                { role: "model", model_rsp: messages.data.model || "There was a system error, please try again later!" }
             ]);
 
         }
